@@ -446,7 +446,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
 {
     QBAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AssetCell" forIndexPath:indexPath];
     cell.tag = indexPath.item;
-    cell.showsOverlayViewWhenSelected = self.imagePickerController.allowsMultipleSelection;
+    //cell.showsOverlayViewWhenSelected = self.imagePickerController.allowsMultipleSelection;
     
     // Image
     PHAsset *asset = self.fetchResult[indexPath.item];
@@ -465,22 +465,22 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     
     // Video indicator
     if (asset.mediaType == PHAssetMediaTypeVideo) {
-        cell.videoIndicatorView.hidden = NO;
+        //cell.videoIndicatorView.hidden = NO;
         
         NSInteger minutes = (NSInteger)(asset.duration / 60.0);
         NSInteger seconds = (NSInteger)ceil(asset.duration - 60.0 * (double)minutes);
-        cell.videoIndicatorView.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
+        //cell.videoIndicatorView.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (long)minutes, (long)seconds];
         
         if (asset.mediaSubtypes & PHAssetMediaSubtypeVideoHighFrameRate) {
-            cell.videoIndicatorView.videoIcon.hidden = YES;
-            cell.videoIndicatorView.slomoIcon.hidden = NO;
+            //cell.videoIndicatorView.videoIcon.hidden = YES;
+            //cell.videoIndicatorView.slomoIcon.hidden = NO;
         }
         else {
-            cell.videoIndicatorView.videoIcon.hidden = NO;
-            cell.videoIndicatorView.slomoIcon.hidden = YES;
+           // cell.videoIndicatorView.videoIcon.hidden = NO;
+            //cell.videoIndicatorView.slomoIcon.hidden = YES;
         }
     } else {
-        cell.videoIndicatorView.hidden = YES;
+        //cell.videoIndicatorView.hidden = YES;
     }
     
     // Selection state

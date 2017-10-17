@@ -10,18 +10,22 @@
 
 @interface QBAssetCell ()
 
-@property (weak, nonatomic) IBOutlet UIView *overlayView;
+//@property (weak, nonatomic) IBOutlet UIView *overlayView;
 
 @end
 
 @implementation QBAssetCell
 
-- (void)setSelected:(BOOL)selected
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    [super setSelected:selected];
-    
-    // Show/hide overlay view
-    self.overlayView.hidden = !(selected && self.showsOverlayViewWhenSelected);
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self.contentView addSubview:self.imageView];
+        self.imageView.frame = frame;
+        self.imageView.userInteractionEnabled = YES;
+    }
+    return self;
 }
+
 
 @end
